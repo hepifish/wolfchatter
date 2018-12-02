@@ -1,0 +1,41 @@
+<div id="map">
+  <div class="content" (click)="$event.stopPropagation()">
+    <mat-card class="card" *ngIf="!currentChatRoom">
+      Click on the map to start a chat
+    </mat-card>
+    <mat-card class="card chat-room" *ngIf="currentChatRoom">
+      <mat-card-subtitle>
+        Chatroom {{currentChatRoom.id}}
+      </mat-card-subtitle>
+
+      <mat-card-content class="message-container" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <div *ngFor="let msg of currentChatRoom.messages" class="message-box">
+          <div class="username">
+            {{msg.username}}:
+          </div>
+          <div class="details">
+            <div class="message">
+              {{msg.message}}
+            </div>
+            <div class="date">
+              {{msg.date | date: 'dd/MM/yyyy'}}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <form (ngSubmit)="sendMessage()" autocomplete="off">
+          <mat-form-field>
+            <input matInput placeholder="write your username here" [(ngModel)]="username" name="username" maxlength="10">
+          </mat-form-field>
+          <mat-form-field class="message-input">
+            <input matInput placeholder="write message here" [(ngModel)]="message" name="message">
+          </mat-form-field>
+          <button type="submit" mat-stroked-button color="primary" class="button" [disabled]="!message || !username">
+            Submit
+          </button>
+        </form>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

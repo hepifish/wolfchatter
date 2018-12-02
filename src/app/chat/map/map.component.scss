@@ -1,0 +1,56 @@
+#map {
+  width: 100%;
+  height: 100%;
+
+  .content {
+    width: 300px;
+    margin: 20px;
+    float: right;
+
+    .card {
+      z-index: 500;
+
+      &.chat-room {
+        cursor: default;
+
+        .message-container {
+          height: 200px;
+          overflow: auto;
+
+          .message-box {
+            display: inline-block;
+            width: 90%;
+            border-bottom: 1px solid rgba(0,0,0,.12);
+
+            .username {
+              float: left;
+              width: 40%;
+            }
+
+            .details {
+              width: 60%;
+              float: right;
+
+              .message {
+                font-weight: bold;
+              }
+
+              .date {
+                float: right;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .message-input {
+    margin-right: 20px;
+  }
+
+  .button {
+    line-height: 25px;
+  }
+}
+
